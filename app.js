@@ -5,6 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var jssdk = require('./routes/jssdk');
+
 var app = express();
 
 //设置跨域访问
@@ -16,10 +23,6 @@ app.all('*', function(req, res, next) {
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var users = require('./routes/jssdk');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/jssdk', jssdk);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

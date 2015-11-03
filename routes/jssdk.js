@@ -65,6 +65,6 @@ router.get('/jssdk',function(req,res){
 			module.exports = sign;
 		});
  	});
- 	
 })
+module.exports = router;
 
